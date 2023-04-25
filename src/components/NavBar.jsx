@@ -25,8 +25,21 @@ function NavBar() {
               Separated link
             </NavDropdown.Item>
           </NavDropdown>
-          <Nav.Link as={Link} to="/login">Login</Nav.Link>
-          {/* <img src='public\Images.jpg\LoginIcon.png' /> */}
+
+          <Nav.Link as={Link} to="/login">Login/Register</Nav.Link>
+
+          <Navbar.Brand href="/login">
+            <img
+              src="Images.jpg\LoginIcon.png"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+              alt="React Bootstrap logo"
+            />
+          </Navbar.Brand>
+
+
+
         </Nav>
       </Navbar.Collapse>
     </Navbar>
