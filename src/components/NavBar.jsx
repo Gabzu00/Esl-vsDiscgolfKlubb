@@ -25,6 +25,8 @@ function NavBar() {
               Separated link
             </NavDropdown.Item>
           </NavDropdown>
+          <Nav.Link as={Link} to="/login">Login</Nav.Link>
+          {/* <img src='public\Images.jpg\LoginIcon.png' /> */}
         </Nav>
       </Navbar.Collapse>
     </Navbar>
