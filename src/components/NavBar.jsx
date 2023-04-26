@@ -20,7 +20,7 @@ function NavBar() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-
+<<<<<<<<< Temporary merge branch 1
         <Nav className="me-auto" activeKey={location.pathname}>
           <Nav.Link as={Link} to="/" eventKey="/">Start</Nav.Link>
           <Nav.Link as={Link} to="/banor" eventKey="/banor">Banor</Nav.Link>
