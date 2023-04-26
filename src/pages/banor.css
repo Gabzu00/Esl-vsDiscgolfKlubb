@@ -1,10 +1,18 @@
+.carousel {
+  width: 750px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 iframe {
   display: block;
   margin: auto;
 }
 
 .carousel-item img {
-  height: 400px;
+  height: 600px;
   object-fit: cover;
 }
 
