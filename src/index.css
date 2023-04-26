@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Heebo&display=swap');
+
+body {
+  font-family: 'Heebo';
+  background-color: black;
+  background-image: url(images/discbasket.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  font-size: 20px;
+}
+
+main {
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  max-width: 900px;
+  background-color: rgb(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 50px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Anton';
+}
