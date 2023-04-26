@@ -1,0 +1,30 @@
+GET http://localhost:3000/users/user2
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "userName": "user3",
+  "password": "123",
+  "firstName": "Klas",
+  "lastName": "Klasson",
+  "ssn": "198312121234",
+  "email": "klas@gmail.com",
+  "number": "0700700707"
+}
+
+###
+
+# PUT http://localhost:3000/api/albums/0
+# Content-Type: application/json
+
+# {
+#   "artist": "Michael Jackson",
+#   "title": "Thriller"
+# }
+
+# ###
+
+# DELETE http://localhost:3000/api/albums/1
