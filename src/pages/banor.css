@@ -1,0 +1,21 @@
+iframe {
+  display: block;
+  margin: auto;
+}
+
+.carousel-item img {
+  height: 400px;
+  object-fit: cover;
+}
+
+.carousel-indicators :not(.active) {
+  background-color: orangered;
+}
+
+.carousel-indicators .active {
+  background-color: orange;
+}
+
+.map {
+  margin-top: 100px;
+}
