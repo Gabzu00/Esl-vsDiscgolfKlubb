@@ -35,6 +35,9 @@ const usersSchema = new mongoose.Schema({
   ssn: String,
   email: String,
   number: String,
+  address: String,
+  city: String,
+  postnr: String,
 }, { collection: 'Users' });
 
 const users = mongoose.model('Users', usersSchema);
@@ -79,6 +82,63 @@ router.post('/users/', async (req, res) => {
     } catch (err) {
       console.log(err);
     }
+  }
+
+})
+
+// Updating a user
+router.put('/users/:userName', async (req, res) => {
+
+  const user = await users.findOne({ userName: req.params.userName });
+
+  if (user != null) {
+    if (req.body.password != null) {
+      user.password = req.body.password;
+    }
+    if (req.body.email != null) {
+      user.email = req.body.email;
+    }
+    if (req.body.number != null) {
+      user.number = req.body.number;
+    }
+    if (req.body.adress != null) {
+      user.address = req.body.address;
+    }
+    if (req.body.city != null) {
+      user.city = req.body.city;
+    }
+    if (req.body.postnr != null) {
+      user.postnr = req.body.postnr;
+    }
+
+    try {
+      const updateUser = await user.save()
+      res.status(200).json(updateUser);
+    } catch (err) {
+      console.log(err);
+    }
+
+  } else {
+    res.status(404).json('User not found');
+  }
+
+})
+
+//Deleting a user
+router.delete('/users/:userName', async (req, res) => {
+
+  const user = await users.findOne({ userName: req.params.userName });
+
+  if (user != null) {
+    try {
+      await users.deleteOne({ userName: req.params.userName })
+      res.status(200).json("Removed successfully");
+    } catch (err) {
+      console.log(err);
+    }
+
+  } else {
+    res.status(404).json('User not found');
   }
 
 })
