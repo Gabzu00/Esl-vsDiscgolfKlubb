@@ -25,6 +25,7 @@ function NavBar() {
           <Nav.Link as={Link} to="/banor" eventKey="/banor">Banor</Nav.Link>
           <Nav.Link as={Link} to="/medlemskap" eventKey="/medlemskap">Medlemskap</Nav.Link>
           <Nav.Link as={Link} to="/login" eventKey="/login">Login/Register</Nav.Link>
+          <Nav.Link as={Link} to="/kontakt" eventKey="/kontakt">Om oss</Nav.Link>
           <Navbar.Brand href="/login">
             <img
               src="Images.jpg\LoginIcon.png"
