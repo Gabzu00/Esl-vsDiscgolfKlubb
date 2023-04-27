@@ -7,6 +7,7 @@ import Register from './pages/register';
 import Kontakt from './pages/kontakt';
 import Start from './pages/start';
 import NavBar from './components/NavBar';
+import Footer from './pages/footer';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <header>
         <NavBar />
       </header>
+
       <Routes>
         <Route path="/" element={<Start />}></Route>
         <Route path="/banor" element={<Banor />} />
@@ -24,6 +26,11 @@ function App() {
         <Route path="/register" element={<Register />}></Route>
         <Route path="/kontakt" element={<Kontakt />}></Route>
       </Routes>
+
+
+      <Footer />
+
+
     </>
   )
 }

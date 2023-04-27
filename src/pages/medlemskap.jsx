@@ -4,9 +4,7 @@ function Medlemskap() {
 
   return (
     <>
-
       <Register />
-
     </>
   )
 }
