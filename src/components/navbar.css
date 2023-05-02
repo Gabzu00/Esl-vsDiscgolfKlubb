@@ -19,3 +19,16 @@
 .navbar .nav-link:not(.active) {
   color: rgb(122, 120, 120);
 }
+
+.logga {
+  position: relative;
+  left: 100px;
+  bottom: 60px;
+}
+
+.loginner {
+  position: absolute;
+  display: block;
+  right: 70px;
+  inset-block: block;
+}

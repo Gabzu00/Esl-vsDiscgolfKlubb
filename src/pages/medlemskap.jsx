@@ -1,10 +1,10 @@
+import Register from './register';
+
 function Medlemskap() {
 
   return (
     <>
-      <main>
-        <h1>Medlemskap</h1>
-      </main>
+      <Register />
     </>
   )
 }
