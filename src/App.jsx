@@ -14,6 +14,9 @@ function App() {
 
   return (
     <>
+
+
+
       <header>
         <NavBar />
       </header>
