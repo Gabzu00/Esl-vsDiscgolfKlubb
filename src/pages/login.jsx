@@ -7,7 +7,7 @@ export default function login() {
   return (
     <main>
       <div>
-        <h1>Vänligen ange användarnamn and lösenord</h1>
+        <h1>Vänligen ange användarnamn och lösenord</h1>
 
         <h2>Användarnamn</h2>
         <input type="text" placeholder="Användarnamn" />

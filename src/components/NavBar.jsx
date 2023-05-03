@@ -27,7 +27,7 @@ function NavBar() {
           <div className='loginner'>
             <Nav.Link as={Link} to="/login" eventKey="/login">Logga in </Nav.Link>
 
-            <Navbar.Brand href="/login">
+            <Nav.Link as={Link} to="/login" eventKey="/login">
               <img
                 src="Images.jpg\LoginIcon.png"
                 width="25"
@@ -35,9 +35,10 @@ function NavBar() {
                 className="logga"
                 alt="React Bootstrap logo"
               />
-            </Navbar.Brand>
+            </Nav.Link>
           </div>
           <Nav.Link as={Link} to="/kontakt" eventKey="/kontakt">Om oss</Nav.Link>
+          <Nav.Link as={Link} to="/admin" eventKey="/admin">Admin</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
