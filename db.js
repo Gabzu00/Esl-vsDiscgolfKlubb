@@ -1,10 +1,11 @@
 import express from 'express';
 import mongoose from 'mongoose';
-const router = express.Router();
+
 import dotenv from 'dotenv'
 dotenv.config()
-
+const router = express.Router();
 mongoose.set('strictQuery', false);
+import cors from 'cors'
 
 const mongoDB = process.env.dbUrl;
 
@@ -12,6 +13,16 @@ const dbApp = express();
 dbApp.use(express.json());
 dbApp.use(express.urlencoded({ extended: false }));
 dbApp.use(router);
+dbApp.use(cors());
+
+dbApp.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 dbApp.listen(3000, () => {
   console.log(`Database listening at http://localhost:3000`)
@@ -43,13 +54,13 @@ const usersSchema = new mongoose.Schema({
 const users = mongoose.model('Users', usersSchema);
 
 // Get all users
-router.get('/users', async (req, res) => {
+dbApp.get('/users', async (req, res) => {
   const allUsers = await users.find();
   res.json(allUsers);
 })
 
 // Get user by username
-router.get('/users/:userName', async (req, res) => {
+dbApp.get('/users/:userName', async (req, res) => {
   const user = await users.find({ userName: req.params.userName });
   if (user.length > 0) {
     res.json(user);
@@ -59,7 +70,7 @@ router.get('/users/:userName', async (req, res) => {
 })
 
 // Add a new user
-router.post('/users/', async (req, res) => {
+dbApp.post('/users/', async (req, res) => {
 
   const exists = await users.find({ userName: req.body.userName });
 
@@ -87,7 +98,7 @@ router.post('/users/', async (req, res) => {
 })
 
 // Updating a user
-router.put('/users/:userName', async (req, res) => {
+dbApp.put('/users/:userName', async (req, res) => {
 
   const user = await users.findOne({ userName: req.params.userName });
 
@@ -125,7 +136,7 @@ router.put('/users/:userName', async (req, res) => {
 })
 
 //Deleting a user
-router.delete('/users/:userName', async (req, res) => {
+dbApp.delete('/users/:userName', async (req, res) => {
 
   const user = await users.findOne({ userName: req.params.userName });
 
