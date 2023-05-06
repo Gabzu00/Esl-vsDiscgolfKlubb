@@ -16,7 +16,7 @@ function Banor() {
               <Carousel.Item>
                 <img
                   className="d-block w-100 rounded-3"
-                  src=".\public\Images.jpg\TrollsjönTräd.png"
+                  src="\Images.jpg\TrollsjönTräd.png"
                   alt="First slide"
                 />
                 <Carousel.Caption>
@@ -27,7 +27,7 @@ function Banor() {
               <Carousel.Item>
                 <img
                   className="d-block w-100 rounded-3"
-                  src=".\public\Images.jpg\TeepadEslöv.png"
+                  src="\Images.jpg\TeepadEslöv.png"
                   alt="Second slide"
                 />
 
@@ -39,7 +39,7 @@ function Banor() {
               <Carousel.Item>
                 <img
                   className="d-block w-100 rounded-3"
-                  src=".\public\Images.jpg\Bankarta-1.png"
+                  src="\Images.jpg\Bankarta-1.png"
                   alt="Third slide"
                 />
 
@@ -54,7 +54,7 @@ function Banor() {
               <Carousel.Item >
                 <img
                   className="d-block w-100 rounded-3"
-                  src=".\public\Images.jpg\Hål4Korg.png"
+                  src="\Images.jpg\Hål4Korg.png"
                   alt="Fourth slide"
                 />
                 <Carousel.Caption>
