@@ -63,13 +63,23 @@ app.get('/api/albums/:title', (req, res) => {
 })
 
 
-app.post('/api/albums', (req, res) => {
-  let id = req.body.id
+app.post('/users', (req, res) => {
+  /* let id = req.body.id
   let title = req.body.title
   let artist = req.body.artist
-  let year = req.body.year
+  let year = req.body.year */
 
-  addData(id, title, artist, year)
+  console.log(req.body)
+
+  let userName = req.body.userName
+  let password = req.body.password
+  let firstName = req.body.firstName
+  let lastName = req.body.lastName
+  let ssn = req.body.ssn
+  let email = req.body.email
+  let number = req.body.number
+
+  addData(userName, password, firstName, lastName, ssn, email, number)
     .then(albums => {
       console.log(albums)
       res.json(albums).status(201)

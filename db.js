@@ -32,10 +32,10 @@ export function getDataTitle(title) {
     });
 }
 
-export function addData(_id, title, artistName, year) {
+export function addData(userName, password, firstName, lastName, ssn, email, number) {
   return dbConnection
     .collection("Users")
-    .insertOne({ _id, title, artistName, year })
+    .insertOne({ userName, password, firstName, lastName, ssn, email, number })
     .then(result => {
       console.log(result.insertedCount + " document(s) inserted");
       return result;
@@ -45,6 +45,7 @@ export function addData(_id, title, artistName, year) {
       /*  throw new Error("Could not insert the document: " + error); */
     });
 }
+
 
 export function updateData(_id, title, artistName, year) {
   console.log(_id)
