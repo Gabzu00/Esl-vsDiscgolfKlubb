@@ -53,6 +53,17 @@ const usersSchema = new mongoose.Schema({
 
 const users = mongoose.model('Users', usersSchema);
 
+import path from 'path'
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+dbApp.use(express.static(path.join(__dirname, 'dist')))
+
+dbApp.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
+
 // Get all users
 dbApp.get('/users', async (req, res) => {
   const allUsers = await users.find();
