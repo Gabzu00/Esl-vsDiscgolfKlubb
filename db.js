@@ -6,7 +6,7 @@ let dbConnection;
 
 export function getData() {
   return dbConnection
-    .collection("Albums")
+    .collection("Users")
     .find()
     .toArray()
     .then(albums => {
@@ -20,7 +20,7 @@ export function getData() {
 export function getDataTitle(title) {
   console.log(title)
   return dbConnection
-    .collection("Albums")
+    .collection("Users")
     .find({ title: { $eq: title } })
     .toArray()
     .then(albums => {
@@ -34,7 +34,7 @@ export function getDataTitle(title) {
 
 export function addData(_id, title, artistName, year) {
   return dbConnection
-    .collection("Albums")
+    .collection("Users")
     .insertOne({ _id, title, artistName, year })
     .then(result => {
       console.log(result.insertedCount + " document(s) inserted");
@@ -49,7 +49,7 @@ export function addData(_id, title, artistName, year) {
 export function updateData(_id, title, artistName, year) {
   console.log(_id)
   return dbConnection
-    .collection("Albums")
+    .collection("Users")
     .updateOne(
       { _id },
       { $set: { title, artistName, year } }
@@ -72,7 +72,7 @@ export function updateData(_id, title, artistName, year) {
 export function deleteData(_id) {
   console.log(_id)
   return dbConnection
-    .collection("Albums")
+    .collection("Users")
     .deleteOne({ _id })
     .then(result => {
       if (result.deletedCount === 1) {
