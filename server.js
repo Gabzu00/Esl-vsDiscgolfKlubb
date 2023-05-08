@@ -74,17 +74,20 @@ app.post('/users', (req, res) => {
   let artist = req.body.artist
   let year = req.body.year */
 
-  console.log(req.body)
+  console.log(req.body + "Hello from server")
 
   let userName = req.body.username
   let password = req.body.password
   let firstName = req.body.firstName
   let lastName = req.body.lastName
-  let ssn = req.body.ssn
+  let socialSecurityNumber = req.body.socialSecurityNumber
+  let address = req.body.address
+  let city = req.body.city
+  let postalCode = req.body.postalCode
   let email = req.body.email
-  let number = req.body.number
+  let phone = req.body.phone
 
-  addData(userName, password, firstName, lastName, ssn, email, number)
+  addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode)
     .then(albums => {
       console.log(albums)
       res.json(albums).status(201)

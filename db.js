@@ -32,10 +32,10 @@ export function getDataTitle(title) {
     });
 }
 
-export function addData(userName, password, firstName, lastName, ssn, email, number) {
+export function addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode) {
   return dbConnection
     .collection("Users")
-    .insertOne({ userName, password, firstName, lastName, ssn, email, number })
+    .insertOne({ userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode })
     .then(result => {
       console.log(result.insertedCount + " document(s) inserted");
       return result;
