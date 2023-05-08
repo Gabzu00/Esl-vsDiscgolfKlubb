@@ -1,4 +1,133 @@
-import express from 'express';
+import { MongoClient } from "mongodb";
+import dotenv from 'dotenv'
+dotenv.config()
+
+let dbConnection;
+
+export function getData() {
+  return dbConnection
+    .collection("Users")
+    .find()
+    .toArray()
+    .then(albums => {
+      return albums;
+    })
+    .catch(error => {
+      throw new Error("Could not fetch the documents: " + error);
+    });
+}
+
+export function getDataTitle(title) {
+  console.log(title)
+  return dbConnection
+    .collection("Users")
+    .find({ title: { $eq: title } })
+    .toArray()
+    .then(albums => {
+      console.log(albums + " array from db")
+      return albums;
+    })
+    .catch(error => {
+      throw new Error("Could not fetch the documents: " + error);
+    });
+}
+
+export function addData(userName, password, firstName, lastName, ssn, email, number) {
+  return dbConnection
+    .collection("Users")
+    .insertOne({ userName, password, firstName, lastName, ssn, email, number })
+    .then(result => {
+      console.log(result.insertedCount + " document(s) inserted");
+      return result;
+    })
+    .catch(error => {
+      return ("The id you entered already exist in the database" + error)
+      /*  throw new Error("Could not insert the document: " + error); */
+    });
+}
+
+
+export function updateData(_id, title, artistName, year) {
+  console.log(_id)
+  return dbConnection
+    .collection("Users")
+    .updateOne(
+      { _id },
+      { $set: { title, artistName, year } }
+    )
+    .then(result => {
+      if (result.modifiedCount === 1) {
+        console.log("Document updated successfully");
+        return result;
+      } else {
+        return "Error ! This id was not found in the database"
+      }
+
+    })
+    .catch(error => {
+      console.log("Could not update the document:", error);
+      throw error;
+    });
+}
+
+export function deleteData(_id) {
+  console.log(_id)
+  return dbConnection
+    .collection("Users")
+    .deleteOne({ _id })
+    .then(result => {
+      if (result.deletedCount === 1) {
+        console.log("Document deleted successfully");
+        return "Document deleted successfully";
+      } else {
+        return "Error ! This id was not found in the database"
+      }
+    })
+    .catch(error => {
+      console.log("Could not delete the document:", error);
+      throw error;
+    });
+}
+
+export async function connectToDB() {
+  try {
+    const client = await MongoClient.connect(process.env.dbUrl);
+    dbConnection = client.db();
+    console.log("Connected!!");
+  } catch (error) {
+    console.log(error + " Hello");
+    throw new Error("Could not connect to database: " + error);
+  }
+}
+
+export function getDB() {
+  return dbConnection;
+}
+
+
+/* module.exports = {
+  deleteData,
+  updateData,
+  addData,
+  getData,
+  getDataTitle,
+  connectToDB: async () => {
+    try {
+      const client = await MongoClient.connect(process.env.URL);
+      dbConnection = client.db();
+      console.log("Connected!!");
+    } catch (error) {
+      console.log(error);
+      throw new Error("Could not connect to database: " + error);
+    }
+  },
+  getDB: () => dbConnection,
+}; */
+
+
+
+
+/* import express from 'express';
 import mongoose from 'mongoose';
 
 import dotenv from 'dotenv'
@@ -13,7 +142,9 @@ const dbApp = express();
 dbApp.use(express.json());
 dbApp.use(express.urlencoded({ extended: false }));
 dbApp.use(router);
-dbApp.use(cors());
+dbApp.use(cors({
+  origin: "*"
+}));
 
 dbApp.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -52,6 +183,17 @@ const usersSchema = new mongoose.Schema({
 }, { collection: 'Users' });
 
 const users = mongoose.model('Users', usersSchema);
+
+import path from 'path'
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+dbApp.use(express.static(path.join(__dirname, 'dist')))
+
+dbApp.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
 
 // Get all users
 dbApp.get('/users', async (req, res) => {
@@ -152,6 +294,7 @@ dbApp.delete('/users/:userName', async (req, res) => {
     res.status(404).json('User not found');
   }
 
+
 })
 
 //Login a user
@@ -165,3 +308,4 @@ dbApp.post('/login', async (req, res) => {
     res.status(401).json('Invalid username or password');
   }
 });
+

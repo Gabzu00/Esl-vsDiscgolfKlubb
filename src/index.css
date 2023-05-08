@@ -7,11 +7,11 @@ body {
   background-size: cover;
   background-attachment: fixed;
   font-size: 20px;
-
 }
 
 main {
   min-height: 50vh;
+  max-height: fit-content;
   margin: auto;
   margin-top: 100px;
   margin-bottom: 100px;
