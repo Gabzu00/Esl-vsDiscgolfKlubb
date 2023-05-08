@@ -6,6 +6,8 @@ dotenv.config()
 import { join } from 'path';
 import { addData, connectToDB, getDB, deleteData, updateData, getDataTitle, getData } from "./db.js";
 import cors from "cors";
+import path from 'path'
+import { fileURLToPath } from "url";
 
 app.use(json())
 
@@ -28,9 +30,12 @@ connectToDB()
 
 /* app.use(express.static(join(__dirname, 'public'))); */
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+app.use(express.static(path.join(__dirname, 'dist')))
+
 app.get('/', (req, res) => {
   /* const filePath = path.join(__dirname, 'index.html'); */
-  res.sendFile(join(__dirname, '/index.html'))
+  res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
 
 app.get('/users', (req, res) => {
@@ -71,7 +76,7 @@ app.post('/users', (req, res) => {
 
   console.log(req.body)
 
-  let userName = req.body.userName
+  let userName = req.body.username
   let password = req.body.password
   let firstName = req.body.firstName
   let lastName = req.body.lastName
