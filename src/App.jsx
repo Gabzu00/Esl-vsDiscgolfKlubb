@@ -15,24 +15,28 @@ function App() {
 
   return (
     <>
-      <header>
-        <NavBar />
-      </header>
 
-      <Routes>
-        <Route path="/" element={<Start />}></Route>
-        <Route path="/banor" element={<Banor />} />
-        <Route path="/medlemskap" element={<Medlemskap />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/kontakt" element={<Kontakt />}></Route>
-        <Route path="/admin" element={<Admin />}></Route>
-      </Routes>
+      <div className='page-container'>
+        <div className='content-wrap'>
+          <header>
+            <NavBar />
+          </header>
+
+          <Routes>
+            <Route path="/" element={<Start />}></Route>
+            <Route path="/banor" element={<Banor />} />
+            <Route path="/medlemskap" element={<Medlemskap />}></Route>
+            <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
+            <Route path="/kontakt" element={<Kontakt />}></Route>
+            <Route path="/admin" element={<Admin />}></Route>
+          </Routes>
 
 
-      <Footer />
+          <Footer />
 
-
+        </div>
+      </div>
     </>
   )
 }

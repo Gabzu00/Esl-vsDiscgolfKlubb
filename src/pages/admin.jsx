@@ -14,6 +14,8 @@ function Admin() {
       .then(data => setUsers(data));
   }, []);
 
+  console.log(users)
+
   return (
     <main>
       <table>

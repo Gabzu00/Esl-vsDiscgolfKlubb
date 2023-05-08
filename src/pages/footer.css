@@ -1,11 +1,8 @@
 .main-footer {
   position: sticky;
-  top: 100%;
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
   color: white;
   padding-top: 30px;
-  max-height: 300px;
   font-size: 15px;
-
 }
