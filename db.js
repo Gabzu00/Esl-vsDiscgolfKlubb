@@ -41,7 +41,7 @@ export function addData(userName, password, firstName, lastName, ssn, email, num
       return result;
     })
     .catch(error => {
-      return ("The id you entered already exist in the database")
+      return ("The id you entered already exist in the database" + error)
       /*  throw new Error("Could not insert the document: " + error); */
     });
 }
