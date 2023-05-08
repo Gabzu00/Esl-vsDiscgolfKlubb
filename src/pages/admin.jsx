@@ -7,7 +7,7 @@ function Admin() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/users', {
+    fetch('/users', {
       method: 'GET',
       crossorigin: true,
     }).then(response => response.json())
