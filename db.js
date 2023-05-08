@@ -294,4 +294,18 @@ dbApp.delete('/users/:userName', async (req, res) => {
     res.status(404).json('User not found');
   }
 
-}) */
+
+})
+
+//Login a user
+dbApp.post('/login', async (req, res) => {
+  const { userName, password } = req.body;
+  const user = await users.findOne({ userName, password });
+
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(401).json('Invalid username or password');
+  }
+});
+
