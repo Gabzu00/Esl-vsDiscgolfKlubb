@@ -34,7 +34,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 app.use(express.static(path.join(__dirname, 'dist')))
 
 app.get('/', (req, res) => {
-  /* const filePath = path.join(__dirname, 'index.html'); */
   res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
 
@@ -125,4 +124,10 @@ app.delete('/api/albums/:id', (req, res) => {
     });
 
 
+})
+
+// THIS ROUTE HAS TO BE AT THE BOTTOM!
+// IF IT'S ABOVE ANY OTHER ROUTE SHIT BREAKS
+app.get('/*', (req, res) => {
+  res.sendFile(join(__dirname, 'dist', 'index.html'))
 })

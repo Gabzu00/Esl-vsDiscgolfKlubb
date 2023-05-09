@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/": "https://eslovsdiscgolf.onrender.com/"
+      "/*": "http://localhost:3000/"
     }
   }
 })
