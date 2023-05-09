@@ -130,4 +130,4 @@ app.delete('/api/albums/:id', (req, res) => {
 // IF IT'S ABOVE ANY OTHER ROUTE SHIT BREAKS
 app.get('/*', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
-})
+});
