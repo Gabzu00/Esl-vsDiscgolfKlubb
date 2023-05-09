@@ -17,19 +17,14 @@ export function getData() {
     });
 }
 
-export function getDataTitle(title) {
-  console.log(title)
-  return dbConnection
-    .collection("Users")
-    .find({ title: { $eq: title } })
-    .toArray()
-    .then(albums => {
-      console.log(albums + " array from db")
-      return albums;
-    })
-    .catch(error => {
-      throw new Error("Could not fetch the documents: " + error);
-    });
+export async function getUser(userName, password) {
+  const user = await dbConnection.collection("Users").findOne({ userName, password });
+
+  if (user) {
+    return user;
+  } else {
+    return "Error, cannot find user";
+  }
 }
 
 export function addData(userName, password, firstName, lastName, ssn, email, number) {
@@ -296,17 +291,5 @@ dbApp.delete('/users/:userName', async (req, res) => {
 
 
 })
-
-//Login a user
-dbApp.post('/login', async (req, res) => {
-  const { userName, password } = req.body;
-  const user = await users.findOne({ userName, password });
-
-  if (user) {
-    res.json(user);
-  } else {
-    res.status(401).json('Invalid username or password');
-  }
-});
 
 }) */

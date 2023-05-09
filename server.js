@@ -4,7 +4,7 @@ const app = express()
 import dotenv from 'dotenv'
 dotenv.config()
 import { join } from 'path';
-import { addData, connectToDB, getDB, deleteData, updateData, getDataTitle, getData } from "./db.js";
+import { addData, connectToDB, getDB, deleteData, updateData, getData, getUser } from "./db.js";
 import cors from "cors";
 import path from 'path'
 import { fileURLToPath } from "url";
@@ -126,3 +126,15 @@ app.delete('/api/albums/:id', (req, res) => {
 
 
 })
+
+//Login a user
+app.post('/login', async (req, res) => {
+  const { userName, password } = req.body;
+  const user = await getUser(userName, password);
+
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(401).json('Invalid username or password');
+  }
+});
