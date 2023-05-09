@@ -34,7 +34,6 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 app.use(express.static(path.join(__dirname, 'dist')))
 
 app.get('/', (req, res) => {
-  /* const filePath = path.join(__dirname, 'index.html'); */
   res.sendFile(join(__dirname, 'dist', 'index.html'))
 })
 
@@ -127,6 +126,7 @@ app.delete('/api/albums/:id', (req, res) => {
 
 })
 
+
 //Login a user
 app.post('/login', async (req, res) => {
   const { userName, password } = req.body;
@@ -138,3 +138,10 @@ app.post('/login', async (req, res) => {
     res.status(401).json('Invalid username or password');
   }
 });
+
+// THIS ROUTE HAS TO BE AT THE BOTTOM!
+// IF IT'S ABOVE ANY OTHER ROUTE SHIT BREAKS
+app.get('/*', (req, res) => {
+  res.sendFile(join(__dirname, 'dist', 'index.html'))
+})
+
