@@ -64,6 +64,11 @@ export default function register() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+    if (password !== repeatPassword) {
+      alert("Lösenord och Upprepa lösenord måste vara samma!");
+      return;
+    }
+
     const formData = {
       username,
       password,
@@ -79,7 +84,7 @@ export default function register() {
     };
 
     try {
-      const response = await fetch('/users', {
+      const response = await fetch('http://localhost:3000/users', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -110,9 +115,10 @@ export default function register() {
           onChange={handleUsernameChange}
         />
 
+
         <h2>Lösenord</h2>
         <input
-          type="text"
+          type="password"
           placeholder="Lösenord"
           value={password}
           onChange={handlePasswordChange}
@@ -120,11 +126,12 @@ export default function register() {
 
         <h2>Upprepa lösenord</h2>
         <input
-          type="text"
+          type="password"
           placeholder="Upprepa"
           value={repeatPassword}
           onChange={handleRepeatPasswordChange}
         />
+
 
         <h2>Förnamn</h2>
         <input
