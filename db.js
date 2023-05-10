@@ -1,5 +1,6 @@
 import { MongoClient } from "mongodb";
 import dotenv from 'dotenv'
+import { ObjectId } from 'mongodb';
 dotenv.config()
 
 let dbConnection;
@@ -65,11 +66,13 @@ export function updateData(_id, title, artistName, year) {
     });
 }
 
-export function deleteData(_id) {
-  console.log(_id)
+// Deletes a user based on id
+export function deleteData(id) {
+  console.log('ID', id)
+
   return dbConnection
     .collection("Users")
-    .deleteOne({ _id })
+    .deleteOne({ _id: new ObjectId(id) })
     .then(result => {
       if (result.deletedCount === 1) {
         console.log("Document deleted successfully");

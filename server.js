@@ -115,13 +115,14 @@ app.put('/api/albums/:id', (req, res) => {
 
 })
 
-app.delete('/api/albums/:id', (req, res) => {
+// Sends the user id to the delete function
+app.delete('/users/:id', (req, res) => {
   let id = req.params.id
 
   deleteData(id)
-    .then(albums => {
-      console.log(albums)
-      res.json(albums).status(201)
+    .then(users => {
+      console.log('IN DELETE', users)
+      res.json(users).status(201)
     })
     .catch(error => {
       res.json(error).status(404)
