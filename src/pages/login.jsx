@@ -11,13 +11,13 @@ export default function login() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setIsLoggedIn(true);
-    }
+    setUserName('');
+    setPassword('');
+    setIsLoggedIn(false);
   }, []);
 
   const handleSubmit = async (event) => {
+    console.log(isLoggedIn)
     event.preventDefault();
     try {
       const response = await fetch('http://localhost:3000/login', {
@@ -28,11 +28,9 @@ export default function login() {
         body: JSON.stringify({ userName, password }),
       });
       const user = await response.json();
-      console.log(user);
       if (user.userName == userName && user.password == password) {
-        localStorage.setItem('user', JSON.stringify(user));
+        //Successful login
         setIsLoggedIn(true);
-        console.log(isLoggedIn);
         navigate('/')
       }
       else {
@@ -48,7 +46,7 @@ export default function login() {
     <main>
       <div>
         {isLoggedIn ? (
-          <h2>Du är inloggad som {JSON.parse(localStorage.getItem('user')).userName}.</h2>
+          <h2>Du är inloggad som nån.</h2>
         ) : (
           <div>
             <h1>Vänligen ange användarnamn och lösenord</h1>

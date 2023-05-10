@@ -17,19 +17,14 @@ export function getData() {
     });
 }
 
-export function getDataTitle(title) {
-  console.log(title)
-  return dbConnection
-    .collection("Users")
-    .find({ title: { $eq: title } })
-    .toArray()
-    .then(albums => {
-      console.log(albums + " array from db")
-      return albums;
-    })
-    .catch(error => {
-      throw new Error("Could not fetch the documents: " + error);
-    });
+export async function getUser(userName, password) {
+  const user = await dbConnection.collection("Users").findOne({ userName, password });
+
+  if (user) {
+    return user;
+  } else {
+    return "Error, cannot find user";
+  }
 }
 
 export function addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age) {
