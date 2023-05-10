@@ -75,8 +75,8 @@ export default function register() {
       return;
     }
 
-    if (username === "" || email === "") {
-      setRegistrationStatus('Användarnamn och email måste fyllas i');
+    if (username === "" || email === "" || age === "" || password === "") {
+      setRegistrationStatus('Användarnamn, ålder, lösenord och email måste fyllas i');
     } else {
       const formData = {
         username,
