@@ -33,9 +33,10 @@ export function getDataTitle(title) {
 }
 
 export function addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age) {
+  const role = "register";
   return dbConnection
     .collection("Users")
-    .insertOne({ userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age })
+    .insertOne({ userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age, role })
     .then(result => {
       console.log(result.insertedCount + " document(s) inserted");
       return result;
