@@ -12,7 +12,6 @@ import Admin from './pages/admin';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-
   return (
     <>
 
