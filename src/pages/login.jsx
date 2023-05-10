@@ -3,12 +3,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button"
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useSignIn } from 'react-auth-kit';
 
 export default function login() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const signIn = useSignIn();
 
   useEffect(() => {
     setUserName('');
@@ -27,9 +29,15 @@ export default function login() {
         },
         body: JSON.stringify({ userName, password }),
       });
-      const user = await response.json();
-      if (user.userName == userName && user.password == password) {
+      if (response.ok) {
         //Successful login
+        const { token } = await response.json();
+        signIn({
+          token: token,
+          expiresIn: 3600,
+          tokenType: "Bearer",
+          authState: { username: userName }
+        })
         setIsLoggedIn(true);
         navigate('/')
       }
