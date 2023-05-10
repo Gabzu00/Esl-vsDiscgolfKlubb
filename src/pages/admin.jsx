@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './admin.css'
+import { Container, Row, Col, Table } from 'react-bootstrap'
 
 function Admin() {
 
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/users', {
+    fetch('/users', {
       method: 'GET',
       crossorigin: true,
     }).then(response => response.json())
@@ -18,13 +19,13 @@ function Admin() {
 
   return (
     <main>
-      <table>
+      <Table className='userTable'>
         <thead>
           <tr>
             <th>Username</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
+            <th>E-mail</th>
           </tr>
         </thead>
         <tbody>
@@ -37,7 +38,7 @@ function Admin() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </main>
   )
 }
