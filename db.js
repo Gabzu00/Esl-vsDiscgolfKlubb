@@ -32,17 +32,16 @@ export function getDataTitle(title) {
     });
 }
 
-export function addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode) {
+export function addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age) {
   return dbConnection
     .collection("Users")
-    .insertOne({ userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode })
+    .insertOne({ userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age })
     .then(result => {
       console.log(result.insertedCount + " document(s) inserted");
       return result;
     })
     .catch(error => {
-      return ("The id you entered already exist in the database" + error)
-      /*  throw new Error("Could not insert the document: " + error); */
+      throw new Error("Could not insert the document: " + error);
     });
 }
 

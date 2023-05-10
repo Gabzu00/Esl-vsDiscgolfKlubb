@@ -16,6 +16,12 @@ export default function register() {
   const [postalCode, setPostalCode] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [registrationStatus, setRegistrationStatus] = useState("");
+
+  function handleAgeChange(event) {
+    setAge(event.target.value)
+  }
 
   function handleUsernameChange(event) {
     setUsername(event.target.value);
@@ -69,37 +75,44 @@ export default function register() {
       return;
     }
 
-    const formData = {
-      username,
-      password,
-      repeatPassword,
-      firstName,
-      lastName,
-      socialSecurityNumber,
-      address,
-      city,
-      postalCode,
-      phone,
-      email,
-    };
+    if (username === "" || email === "") {
+      setRegistrationStatus('Användarnamn och email måste fyllas i');
+    } else {
+      const formData = {
+        username,
+        password,
+        repeatPassword,
+        firstName,
+        lastName,
+        socialSecurityNumber,
+        address,
+        city,
+        postalCode,
+        phone,
+        email,
+        age
+      };
 
-    try {
-      const response = await fetch('http://localhost:3000/users', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
+      try {
+        const response = await fetch('http://localhost:3000/users', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
 
-      if (response.ok) {
-        console.log('Registration successful!');
-      } else {
-        console.error('Registration failed.');
+        if (response.ok) {
+          setRegistrationStatus('Registration successful!');
+        } else {
+          setRegistrationStatus('Registration failed.');
+        }
+      } catch (error) {
+        console.error(error);
+        setRegistrationStatus('Registration failed.');
       }
-    } catch (error) {
-      console.error(error);
     }
+
   };
 
   return (
@@ -192,30 +205,25 @@ export default function register() {
           onChange={handleEmailChange}
         />
 
+        <div className='ålder'>
+          <h2>Junior/Senior</h2>
+          <h4>Om du är junior (under 18) blir du medlem i klubben till ett lägre pris</h4>
+
+          <h2>Din ålder</h2>
+          <input type="text"
+            placeholder="Ålder"
+            value={age}
+            onChange={handleAgeChange}
+          />
+
+        </div>
+
         <div className="registerButton" onClick={handleSubmit}>
           <Button>
             Registrera
           </Button>
         </div>
-
-
-
-        <div className='ålder'>
-          <h2>Junior/Senior</h2>
-          <h4>Om du är junior (under 18) blir du medlem i klubben till ett lägre pris</h4>
-
-          <div className='input1'>
-            <input className='box' type="checkbox" id="demoCheckbox" name="checkbox" value="1" />
-            <label for="demoCheckbox">Jag är under 18 gammal</label>
-          </div>
-
-          <div className='input1'>
-            <input className='box' type="checkbox" id="demoCheckbox" name="checkbox" value="1" />
-            <label for="demoCheckbox">Jag är över 18 år gammal</label>
-          </div>
-
-        </div>
-
+        {registrationStatus && <p>{registrationStatus}</p>} {/* Show the registration status if it's set */}
       </div>
     </main>
   )
