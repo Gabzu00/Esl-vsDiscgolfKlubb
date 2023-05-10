@@ -8,7 +8,7 @@ function Admin() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch('/users', {
+    fetch('http://localhost:3000/users', {
       method: 'GET',
       crossorigin: true,
     }).then(response => response.json())
@@ -19,6 +19,7 @@ function Admin() {
 
   return (
     <main>
+
       <Table className='userTable'>
         <thead>
           <tr>

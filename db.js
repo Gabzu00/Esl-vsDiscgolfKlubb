@@ -27,17 +27,17 @@ export async function getUser(userName, password) {
   }
 }
 
-export function addData(userName, password, firstName, lastName, ssn, email, number) {
+export function addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age) {
+  const role = "register";
   return dbConnection
     .collection("Users")
-    .insertOne({ userName, password, firstName, lastName, ssn, email, number })
+    .insertOne({ userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age, role })
     .then(result => {
       console.log(result.insertedCount + " document(s) inserted");
       return result;
     })
     .catch(error => {
-      return ("The id you entered already exist in the database" + error)
-      /*  throw new Error("Could not insert the document: " + error); */
+      throw new Error("Could not insert the document: " + error);
     });
 }
 
