@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button"
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSignIn } from 'react-auth-kit';
+import { useIsAuthenticated, useAuthUser } from 'react-auth-kit'
 
 export default function login() {
   const [userName, setUserName] = useState('');
@@ -11,6 +12,8 @@ export default function login() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
   const signIn = useSignIn();
+  const isAuthenticated = useIsAuthenticated();
+  const auth = useAuthUser();
 
   useEffect(() => {
     setUserName('');
@@ -19,7 +22,6 @@ export default function login() {
   }, []);
 
   const handleSubmit = async (event) => {
-    console.log(isLoggedIn)
     event.preventDefault();
     try {
       const response = await fetch('http://localhost:3000/login', {
@@ -31,12 +33,12 @@ export default function login() {
       });
       if (response.ok) {
         //Successful login
-        const { token } = await response.json();
+        const token = await response.json();
         signIn({
-          token: token,
+          token: token.token,
           expiresIn: 3600,
           tokenType: "Bearer",
-          authState: { username: userName }
+          authState: { username: userName, role: token.role }
         })
         setIsLoggedIn(true);
         navigate('/')
@@ -53,8 +55,8 @@ export default function login() {
   return (
     <main>
       <div>
-        {isLoggedIn ? (
-          <h2>Du är inloggad som nån.</h2>
+        {isAuthenticated() ? (
+          <h2>Du är inloggad som {auth().username}.</h2>
         ) : (
           <div>
             <h1>Vänligen ange användarnamn och lösenord</h1>
