@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css";
 import './admin.css'
+import { Container, Row, Col, Table } from 'react-bootstrap'
 
 function Admin() {
 
@@ -18,13 +19,14 @@ function Admin() {
 
   return (
     <main>
-      <table className='table'>
+
+      <Table className='userTable'>
         <thead>
           <tr>
             <th>Username</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
+            <th>E-mail</th>
           </tr>
         </thead>
         <tbody>
@@ -37,7 +39,7 @@ function Admin() {
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </main>
   )
 }
