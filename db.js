@@ -99,5 +99,3 @@ export function getDB() {
   return dbConnection;
 }
 
-
-
