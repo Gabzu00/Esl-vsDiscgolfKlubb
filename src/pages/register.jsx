@@ -95,7 +95,7 @@ export default function register() {
     } catch (error) {
       console.error(error);
     }
-  };
+  }
 
   return (
     <main>
