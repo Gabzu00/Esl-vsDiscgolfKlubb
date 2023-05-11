@@ -145,7 +145,7 @@ app.post('/login', async (req, res) => {
 
   if (user) {
     const token = generateToken(user);
-    res.json({ token: token, role: user.role });
+    res.json({ token: token, role: user.role, payDate: user.payDate });
   } else {
     res.status(401).json('Invalid username or password');
   }

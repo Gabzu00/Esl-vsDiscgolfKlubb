@@ -39,7 +39,7 @@ export default function login() {
           token: token.token,
           expiresIn: 3600,
           tokenType: "Bearer",
-          authState: { username: userName, role: token.role }
+          authState: { username: userName, role: token.role, payDate: token.payDate }
         })
         setIsLoggedIn(true);
         navigate('/')
@@ -60,6 +60,7 @@ export default function login() {
           <div>
             <h2>Du är inloggad som {auth().username}.</h2>
             <h2>Medlemskap: {auth().role}</h2>
+            <h2>Senaste betalning: {new Date(auth().payDate).toLocaleDateString("sv-SE", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</h2>
           </div>
         ) : (
           <div>
