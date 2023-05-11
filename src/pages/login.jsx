@@ -56,7 +56,10 @@ export default function login() {
     <main>
       <div>
         {isAuthenticated() ? (
-          <h2>Du är inloggad som {auth().username}.</h2>
+          <div>
+            <h2>Du är inloggad som {auth().username}.</h2>
+            <h2>Medlemskap: {auth().role}</h2>
+          </div>
         ) : (
           <div>
             <h1>Vänligen ange användarnamn och lösenord</h1>
