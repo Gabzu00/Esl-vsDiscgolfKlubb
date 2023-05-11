@@ -26,9 +26,9 @@ function Admin() {
       <Table className='userTable'>
         <thead>
           <tr>
-            <th>Username</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Användarnamn</th>
+            <th>Namn</th>
+            <th>Efternamn</th>
             <th>E-mail</th>
           </tr>
         </thead>
@@ -39,7 +39,8 @@ function Admin() {
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td>{user.email}</td>
-              <td><Button variant='dark' onClick={() => handleRemoveUser(user._id)}>Remove</Button></td>
+              <td><Button variant='dark' onClick={() => handleRemoveUser(user._id)}>Ta bort</Button></td>
+              <td><Button variant='dark' onClick={() => handleEditUser(user._id)}>Redigera</Button></td>
             </tr>
           ))}
         </tbody>
@@ -52,6 +53,18 @@ function Admin() {
 function handleRemoveUser(id) {
   fetch(DEV_VARIABLE + `/users/${id}`, {
     method: 'DELETE',
+    headers: { 'content-type': 'application/json' },
+    crossorigin: true,
+  }).then(response => {
+    console.log('RESPONSE', response)
+    return response.json()
+  })
+}
+
+// Edits the information of a user based on id
+function handleEditUser(id) {
+  fetch(DEV_VARIABLE + `/users/${id}`, {
+    method: 'PUT',
     headers: { 'content-type': 'application/json' },
     crossorigin: true,
   }).then(response => {

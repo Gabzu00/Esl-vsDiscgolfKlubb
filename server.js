@@ -28,8 +28,6 @@ connectToDB()
     console.log(error);
   });
 
-/* app.use(express.static(join(__dirname, 'public'))); */
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 app.use(express.static(path.join(__dirname, 'dist')))
 
@@ -40,7 +38,6 @@ app.get('/', (req, res) => {
 app.get('/users', (req, res) => {
   getData()
     .then(albums => {
-      /* getData(albums); */
       res.json(albums)
     })
     .catch(error => {
@@ -93,8 +90,8 @@ app.post('/users', (req, res) => {
     });
 })
 
-
-app.put('/api/albums/:id', (req, res) => {
+// Edits the information of a user
+app.put('/users/:id', (req, res) => {
   let id = req.params.id
   let title = req.body.title
   let artist = req.body.artist

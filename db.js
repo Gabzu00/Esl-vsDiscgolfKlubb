@@ -42,8 +42,8 @@ export function addData(userName, password, firstName, lastName, socialSecurityN
     });
 }
 
-
-export function updateData(_id, title, artistName, year) {
+// Updates a user based on id
+export function updateData(_id, userName, firstName, lastName, socialSecurityNumber, email, number, role) {
   console.log(_id)
   return dbConnection
     .collection("Users")
