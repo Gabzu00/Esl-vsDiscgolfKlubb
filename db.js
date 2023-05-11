@@ -28,11 +28,15 @@ export async function getUser(userName, password) {
   }
 }
 
-export function addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age) {
+export function addData(userName, password, firstName, lastName, socialSecurityNumber,
+  email, phone, address, city, postalCode, age) {
   const role = "register";
   return dbConnection
     .collection("Users")
-    .insertOne({ userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age, role })
+    .insertOne({
+      userName, password, firstName, lastName, socialSecurityNumber,
+      email, phone, address, city, postalCode, age, role
+    })
     .then(result => {
       console.log(result.insertedCount + " document(s) inserted");
       return result;
@@ -43,7 +47,8 @@ export function addData(userName, password, firstName, lastName, socialSecurityN
 }
 
 // Updates a user based on id
-export function updateData(_id, userName, firstName, lastName, socialSecurityNumber, email, number, role) {
+export function updateData(_id, userName, firstName, lastName, socialSecurityNumber,
+  email, phone, addrewss, city, postalCode, age, role) {
   console.log(_id)
   return dbConnection
     .collection("Users")
