@@ -23,6 +23,7 @@ function Admin() {
 
   return (
     <main>
+
       <Table className='userTable'>
         <thead>
           <tr>
