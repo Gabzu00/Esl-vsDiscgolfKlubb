@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useSignIn } from 'react-auth-kit';
 import { useIsAuthenticated, useAuthUser } from 'react-auth-kit'
+import './login.css'
 
 export default function login() {
   const [userName, setUserName] = useState('');
@@ -72,18 +73,20 @@ export default function login() {
               <label>
                 <input type="password" placeholder="Lösenord" value={password} onChange={(input) => setPassword(input.target.value)} />
               </label>
-              <Button type="submit">Logga in</Button>
+              <div>
+                <Button className="loginBtn" variant="dark" type="submit">Logga in</Button>
+              </div>
             </form>
-
-            <Button>Glömt Lösenord eller Användarnamn?</Button>
-
+            <div>
+              <Button className="glömt" variant="dark">Glömt Lösenord eller Användarnamn?</Button>
+            </div>
             <h4>Inte registrerad?</h4>
 
             <Link to={{
               pathname: "/register",
 
             }}>
-              <Button>Registrera</Button>
+              <Button variant="dark">Registrera</Button>
             </Link>
 
           </div>)}
