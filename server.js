@@ -9,6 +9,7 @@ import cors from "cors";
 import path from 'path'
 import { fileURLToPath } from "url";
 import jwt from 'jsonwebtoken'
+import bcrypt from 'bcrypt';
 
 app.use(json())
 
@@ -78,29 +79,32 @@ app.get('/api/albums/:title', (req, res) => {
 })
 
 
-app.post('/users', (req, res) => {
-  /* let id = req.body.id
-  let title = req.body.title
-  let artist = req.body.artist
-  let year = req.body.year */
+app.post('/users', async (req, res) => {
 
-  console.log(req.body)
+  console.log(req.body + "Hello from server")
 
   let userName = req.body.username
   let password = req.body.password
   let firstName = req.body.firstName
   let lastName = req.body.lastName
-  let ssn = req.body.ssn
+  let socialSecurityNumber = req.body.socialSecurityNumber
+  let address = req.body.address
+  let city = req.body.city
+  let postalCode = req.body.postalCode
   let email = req.body.email
-  let number = req.body.number
+  let phone = req.body.phone
+  let age = req.body.age
 
-  addData(userName, password, firstName, lastName, ssn, email, number)
-    .then(albums => {
-      console.log(albums)
-      res.json(albums).status(201)
+  const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
+  addData(userName, hashedPassword, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age)
+    .then(result => {
+      console.log(result + " Hello 2")
+      res.status(200).send("Registration successful!");
     })
     .catch(error => {
-      res.json(error).status(409)
+      console.log(error + " hello")
+      res.status(500).send("Could not insert the document: " + error);
     });
 })
 
@@ -122,13 +126,14 @@ app.put('/api/albums/:id', (req, res) => {
 
 })
 
-app.delete('/api/albums/:id', (req, res) => {
+// Sends the user id to the delete function
+app.delete('/users/:id', (req, res) => {
   let id = req.params.id
 
   deleteData(id)
-    .then(albums => {
-      console.log(albums)
-      res.json(albums).status(201)
+    .then(users => {
+      console.log('IN DELETE', users)
+      res.json(users).status(201)
     })
     .catch(error => {
       res.json(error).status(404)
