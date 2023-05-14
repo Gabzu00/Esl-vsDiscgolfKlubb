@@ -8,6 +8,7 @@ import { addData, connectToDB, getDB, deleteData, updateData, getData, getUser }
 import cors from "cors";
 import path from 'path'
 import { fileURLToPath } from "url";
+import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt';
 
 app.use(json())
@@ -33,6 +34,16 @@ connectToDB()
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 app.use(express.static(path.join(__dirname, 'dist')))
+
+function generateToken(user) {
+  const payload = {
+    username: user.userName,
+    password: user.password
+  };
+
+  const token = jwt.sign(payload, process.env.JWT_SECRET);
+  return token;
+}
 
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'dist', 'index.html'))
@@ -138,7 +149,8 @@ app.post('/login', async (req, res) => {
   const user = await getUser(userName, password);
 
   if (user) {
-    res.json(user);
+    const token = generateToken(user);
+    res.json({ token: token, role: user.role, payDate: user.payDate });
   } else {
     res.status(401).json('Invalid username or password');
   }
