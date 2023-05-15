@@ -3,12 +3,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button"
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useSignIn } from 'react-auth-kit';
+import { useIsAuthenticated, useAuthUser } from 'react-auth-kit'
+import './login.css'
 
 export default function login() {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const signIn = useSignIn();
+  const isAuthenticated = useIsAuthenticated();
+  const auth = useAuthUser();
 
   useEffect(() => {
     setUserName('');
@@ -17,19 +23,24 @@ export default function login() {
   }, []);
 
   const handleSubmit = async (event) => {
-    console.log(isLoggedIn)
     event.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch('/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ userName, password }),
       });
-      const user = await response.json();
-      if (user.userName == userName && user.password == password) {
+      if (response.ok) {
         //Successful login
+        const token = await response.json();
+        signIn({
+          token: token.token,
+          expiresIn: 3600,
+          tokenType: "Bearer",
+          authState: { username: userName, role: token.role, payDate: token.payDate }
+        })
         setIsLoggedIn(true);
         navigate('/')
       }
@@ -45,8 +56,12 @@ export default function login() {
   return (
     <main>
       <div>
-        {isLoggedIn ? (
-          <h2>Du är inloggad som nån.</h2>
+        {isAuthenticated() ? (
+          <div>
+            <h2>Du är inloggad som {auth().username}.</h2>
+            <h2>Medlemskap: {auth().role}</h2>
+            <h2>Senaste betalning: {new Date(auth().payDate).toLocaleDateString("sv-SE", { weekday: "long", month: "long", day: "numeric", year: "numeric" })}</h2>
+          </div>
         ) : (
           <div>
             <h1>Vänligen ange användarnamn och lösenord</h1>
@@ -59,18 +74,20 @@ export default function login() {
               <label>
                 <input type="password" placeholder="Lösenord" value={password} onChange={(input) => setPassword(input.target.value)} />
               </label>
-              <Button type="submit">Logga in</Button>
+              <div>
+                <Button className="loginBtn" variant="dark" type="submit">Logga in</Button>
+              </div>
             </form>
-
-            <Button>Glömt Lösenord eller Användarnamn?</Button>
-
+            <div>
+              <Button className="glömt" variant="dark">Glömt Lösenord eller Användarnamn?</Button>
+            </div>
             <h4>Inte registrerad?</h4>
 
             <Link to={{
               pathname: "/register",
 
             }}>
-              <Button>Registrera</Button>
+              <Button variant="dark">Registrera</Button>
             </Link>
 
           </div>)}
