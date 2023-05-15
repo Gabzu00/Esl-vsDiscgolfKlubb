@@ -21,9 +21,9 @@ export default function footer() {
           <div className='col'>
             <h4>Kontaktpersoner</h4>
             <ul className='list-unstyled'>
-              <li>Bosse</li>
-              <li>Bob</li>
-              <li>Bill</li>
+              <li>Gabriel</li>
+              <li>Adam</li>
+              <li>Samuel</li>
             </ul>
           </div>
           {/* col-3 */}

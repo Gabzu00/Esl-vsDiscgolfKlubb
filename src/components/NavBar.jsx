@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from "react-bootstrap/Button"
 import './navbar.css'
+import { useEffect } from "react";
 import { useSignOut } from 'react-auth-kit';
 import { useIsAuthenticated, useAuthUser } from 'react-auth-kit'
 
@@ -16,9 +17,36 @@ function NavBar() {
 
   if (isAuthenticated()) {
     isAdmin = auth().role === "admin";
-  }
+  };
+
+  window.onload = function () {
+    const divElement = document.getElementById('google_translate_element');
+    divElement.innerHTML = '';
+
+    var addScript = document.createElement('script');
+    addScript.setAttribute(
+      'src',
+      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+    );
+    document.body.appendChild(addScript);
+  };
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: 'sv',
+        autoDisplay: false,
+      },
+      'google_translate_element'
+    );
+  };
+
+  window.googleTranslateElementInit = googleTranslateElementInit;
+
+
 
   return (<>
+
     <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand href="/">
         <img
@@ -62,6 +90,9 @@ function NavBar() {
               </Nav.Link>
             </div>
           )}
+
+          <div id="google_translate_element"></div>
+
         </Nav>
       </Navbar.Collapse>
     </Navbar>
