@@ -27,7 +27,7 @@ export default defineConfig({
 ```
 
 <br />
-Then you also need to change the DEV_VARIABLE to http://localhost:3000 and add it to all the fetches in the project. It should look somthing like this -->
+Then you also need to change the DEV_VARIABLE in admin.jsx to http://localhost:3000 and add it to all the fetches in the project. It should look something like this -->
 
 ```
 const response = await fetch('http://localhost:3000/login', {
