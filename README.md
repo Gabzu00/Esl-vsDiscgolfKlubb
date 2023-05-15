@@ -2,7 +2,7 @@
 The applicatio is built with react for the frontend and node.js with express for the backend. For the database we use mongodb and we chose to use mongoclient instead of mongoose as we tought it was easier. 
 We have also used bootrstrap to make the website responsite. In order to use our site follow this link --> https://eslovsdiscgolf.onrender.com/
 
-
+## Running the webiste locally
 If you want to run the site localy clone the repo and run npm install. You also need to include a .env file and enter the following information. 
 
 ```
