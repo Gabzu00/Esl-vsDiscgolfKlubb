@@ -12,7 +12,7 @@ dbUrl = "mongodb+srv://Samuel:HY54T30ClyWnomle@fullstackproject.i9iyxms.mongodb.
 PORT = "3000"
 JWT_SECRET = 'lkjahsdfkhaslkjdfhlak82o345yu9823yhasldkjhfapöoiwyu5p9283o4y'
 ````
-Then you need to change the vite.config file so the the contetnt looks like this --> 
+Then you need to change the vite.config file so the the content looks like this --> 
 
 ```
 // https://vitejs.dev/config/
