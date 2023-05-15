@@ -5,7 +5,7 @@ import { Container, Row, Col, Table, Button } from 'react-bootstrap'
 
 // Make this variable 'http://localhost:3000' when in dev environment
 // Make empty ('') before pushing/merging
-const DEV_VARIABLE = 'http://localhost:3000'
+const DEV_VARIABLE = ''
 
 function Admin() {
 
