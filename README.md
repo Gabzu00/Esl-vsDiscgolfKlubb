@@ -1,7 +1,7 @@
 # Esl-vsDiscgolfKlubb
 On the site you receive information about the discgolf club in Eslöv and how to become a member. The site is very straight forward. 
 ## Regular use
-The applicatio is built with react for the frontend and node.js with express for the backend. For the database we use mongodb and we chose to use mongoclient instead of mongoose as we tought it was easier. 
+The application is built with react for the frontend and node.js with express for the backend. For the database we use mongodb and we chose to use mongoclient instead of mongoose as we tought it was easier. 
 We have also used bootrstrap to make the website responsite. In order to use our site follow this link --> https://eslovsdiscgolf.onrender.com/
 
 ## Running the webiste locally
