@@ -12,7 +12,7 @@ export default function footer() {
           <div className='col'>
             <h4>Eslövs Discgolf Klubb</h4>
             <ul className='list-unstyled'>
-              <li>0727492439</li>
+              <li>0732097219</li>
               <li>Eslöv Sverige</li>
               <li>Odengatan 46</li>
             </ul>
