@@ -32,3 +32,9 @@
   right: 70px;
   inset-block: block;
 }
+
+#google_translate_element {
+  position: relative;
+  left: 12px;
+  margin-top: 12px;
+}

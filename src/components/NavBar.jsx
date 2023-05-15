@@ -1,13 +1,40 @@
 import { Link, useLocation } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import './navbar.css'
+import { useEffect } from "react";
 
 function NavBar() {
-  const location = useLocation()
+  const location = useLocation();
+
+  window.onload = function () {
+    const divElement = document.getElementById('google_translate_element');
+    divElement.innerHTML = '';
+
+    var addScript = document.createElement('script');
+    addScript.setAttribute(
+      'src',
+      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'
+    );
+    document.body.appendChild(addScript);
+  };
+
+  const googleTranslateElementInit = () => {
+    new window.google.translate.TranslateElement(
+      {
+        pageLanguage: 'sv',
+        autoDisplay: false,
+      },
+      'google_translate_element'
+    );
+  };
+
+  window.googleTranslateElementInit = googleTranslateElementInit;
+
+
 
   return (<>
+
     <Navbar bg="dark" variant="dark" expand="lg">
       <Navbar.Brand href="/">
         <img
@@ -39,6 +66,9 @@ function NavBar() {
           </div>
           <Nav.Link as={Link} to="/kontakt" eventKey="/kontakt">Om oss</Nav.Link>
           <Nav.Link as={Link} to="/admin" eventKey="/admin">Admin</Nav.Link>
+
+          <div id="google_translate_element"></div>
+
         </Nav>
       </Navbar.Collapse>
     </Navbar>
