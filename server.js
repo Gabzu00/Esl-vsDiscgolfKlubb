@@ -30,8 +30,6 @@ connectToDB()
     console.log(error);
   });
 
-/* app.use(express.static(join(__dirname, 'public'))); */
-
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 app.use(express.static(path.join(__dirname, 'dist')))
 
@@ -52,7 +50,6 @@ app.get('/', (req, res) => {
 app.get('/users', (req, res) => {
   getData()
     .then(albums => {
-      /* getData(albums); */
       res.json(albums)
     })
     .catch(error => {
@@ -108,17 +105,26 @@ app.post('/users', async (req, res) => {
     });
 })
 
-
-app.put('/api/albums/:id', (req, res) => {
+// Edits the information of a user
+app.put('/users/:id', (req, res) => {
   let id = req.params.id
-  let title = req.body.title
-  let artist = req.body.artist
-  let year = req.body.year
+  let userName = req.body.userName
+  let firstName = req.body.firstName
+  let lastName = req.body.lastName
+  let socialSecurityNumber = req.body.socialSecurityNumber
+  let phone = req.body.phone
+  let email = req.body.email
+  let age = req.body.age
+  let address = req.body.address
+  let city = req.body.city
+  let postalCode = req.body.postal
+  let role = req.body.role
 
-  updateData(id, title, artist, year)
-    .then(albums => {
-      console.log(albums)
-      res.json(albums).status(201)
+  updateData(id, userName, firstName, lastName, socialSecurityNumber,
+    phone, email, age, address, city, postalCode, role)
+    .then(users => {
+      console.log(users)
+      res.json(users).status(201)
     })
     .catch(error => {
       res.json(error).status(404)

@@ -7,30 +7,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   font-size: 20px;
-}
-
-@media (max-width: 700px) {
-  body {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 500px) {
-  body {
-    font-size: 12px;
-  }
-}
-
-@media (max-width: 350px) {
-  body {
-    font-size: 10px;
-  }
-}
-
-@media (max-width: 300px) {
-  body {
-    font-size: 8px;
-  }
+  overflow-y: scroll;
 }
 
 main {
@@ -50,4 +27,8 @@ h2,
 h3,
 h4 {
   font-family: 'Anton';
+}
+
+.modal {
+  overflow-y: scroll;
 }

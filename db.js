@@ -5,6 +5,7 @@ dotenv.config()
 
 let dbConnection;
 
+// Gets all users in the database
 export function getData() {
   return dbConnection
     .collection("Users")
@@ -28,11 +29,16 @@ export async function getUser(userName, password) {
   }
 }
 
-export function addData(userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age) {
-  const role = "register";
+// Adds a user to the database
+export function addData(userName, password, firstName, lastName, socialSecurityNumber,
+  email, phone, address, city, postalCode, age) {
+  const role = "registered";
   return dbConnection
     .collection("Users")
-    .insertOne({ userName, password, firstName, lastName, socialSecurityNumber, email, phone, address, city, postalCode, age, role })
+    .insertOne({
+      userName, password, firstName, lastName, socialSecurityNumber,
+      email, phone, address, city, postalCode, age, role
+    })
     .then(result => {
       console.log(result.insertedCount + " document(s) inserted");
       return result;
@@ -42,14 +48,29 @@ export function addData(userName, password, firstName, lastName, socialSecurityN
     });
 }
 
-
-export function updateData(_id, title, artistName, year) {
-  console.log(_id)
+// Updates a user based on id
+export function updateData(id, userName, firstName, lastName, socialSecurityNumber,
+  phone, email, age, address, city, postalCode, role) {
+  console.log('IN DATABASE', id)
   return dbConnection
     .collection("Users")
     .updateOne(
-      { _id },
-      { $set: { title, artistName, year } }
+      { _id: new ObjectId(id) },
+      {
+        $set: {
+          userName: userName,
+          firstName: firstName,
+          lastName: lastName,
+          socialSecurityNumber: socialSecurityNumber,
+          phone: phone,
+          email: email,
+          age: age,
+          address: address,
+          city: city,
+          postalCode: postalCode,
+          role: role
+        }
+      }
     )
     .then(result => {
       if (result.modifiedCount === 1) {
