@@ -6,7 +6,7 @@ import ModalComponent from '../components/ModalComponent';
 
 // Make this variable 'http://localhost:3000' when in dev environment
 // Make empty ('') before pushing/merging
-const DEV_VARIABLE = 'http://localhost:3000'
+const DEV_VARIABLE = ''
 
 function Admin() {
   const [users, setUsers] = useState([])    // Users that are listed
