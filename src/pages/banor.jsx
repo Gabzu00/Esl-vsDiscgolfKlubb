@@ -68,7 +68,7 @@ function Banor() {
 
           <div className="map">
             <h1 className="row d-flex justify-content-center">Hitta oss!</h1>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.4071479637773!2d13.286595476689893!3d55.83824887311596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46539561059b6abd%3A0xa7584f548e8a5f42!2sEsl%C3%B6vs%20Discgolfbana!5e0!3m2!1ssv!2sse!4v1682423234643!5m2!1ssv!2sse" width="600" height="450" style={{ border: "0" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2240.4071479637773!2d13.286595476689893!3d55.83824887311596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46539561059b6abd%3A0xa7584f548e8a5f42!2sEsl%C3%B6vs%20Discgolfbana!5e0!3m2!1ssv!2sse!4v1682423234643!5m2!1ssv!2sse" style={{ border: "0" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
           </div>
 
         </div>
