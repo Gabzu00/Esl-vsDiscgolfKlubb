@@ -28,7 +28,15 @@ export default function kontakt() {
           backend.
         </h3>
 
+        <h2>What we have done</h2>
+        <h3>Gabriel</h3>
+        <p>Register users, Page for login/register, Frontend - Banor, Frontend - Kontakt/About, Frontend - Footers, Change backend files for the database (test), Google translate, Bcrypt</p>
 
+        <h3>Adam</h3>
+        <p>Fix nodemon/express server, Styling, Render, Frontend - Start/Hem, Admin Dashboard (CRUD operations)</p>
+
+        <h3>Samuel</h3>
+        <p>Database API, Login users, Logout users, Authentication, Backend - Database, Admins can see a list of members. (Access control), Page for members to see information about their membership, Frontend - Headers (NavBar)</p>
       </div>
     </main>
   )
