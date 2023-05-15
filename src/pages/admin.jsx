@@ -6,7 +6,7 @@ import ModalComponent from '../components/ModalComponent';
 
 // Make this variable 'http://localhost:3000' when in dev environment
 // Make empty ('') before pushing/merging
-const DEV_VARIABLE = ''
+const DEV_VARIABLE = 'http://localhost:3000'
 
 function Admin() {
   const [users, setUsers] = useState([])    // Users that are listed
@@ -74,8 +74,8 @@ function Admin() {
 
   return (
     <main>
-      <div>
-        <Table className='userTable'>
+      <div className='tet'>
+        <Table className='userTable w-auto' size='sm'>
           <thead>
             <tr>
               <th>Namn</th>
@@ -100,7 +100,7 @@ function Admin() {
                 <Collapse in={openUser === user._id}>
                   <tr key={user._id + '-collapse'}>
                     <td>
-                      <strong>Personnummer:</strong><br />
+                      <strong>PersonNr:</strong><br />
                       {user.socialSecurityNumber}<br />
                       <strong>Telefon:</strong><br />
                       {user.phone}<br />

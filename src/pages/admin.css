@@ -1,41 +1,89 @@
-@media (max-width: 850px) {
-  body {
+body {
+  font-size: 20px;
+}
+
+@media (max-width: 630px) {
+  .tet {
+    font-size: 18px;
+  }
+
+}
+
+@media (max-width: 560px) {
+  .tet {
     font-size: 18px;
   }
 
   .button {
+    font-size: 12px;
+    padding: 2px;
+  }
+}
+
+@media (max-width: 530px) {
+  .tet {
     font-size: 14px;
   }
-}
-
-@media (max-width: 800px) {
-  body {
-    font-size: 16px;
-  }
 
   .button {
     font-size: 12px;
+    padding: 2px;
   }
 }
 
-@media (max-width: 730px) {
-  body {
+@media (max-width: 455px) {
+  .tet {
     font-size: 12px;
   }
 
   .button {
     font-size: 12px;
+    padding: 2px;
   }
 }
 
-@media (max-width: 350px) {
-  body {
+@media (max-width: 420px) {
+  .tet {
+    font-size: 12px;
+  }
+
+  .button {
+    font-size: 10px;
+    padding: 2px;
+  }
+
+  main {
+    padding: 2%;
+  }
+}
+
+@media (max-width: 360px) {
+  .tet {
     font-size: 10px;
   }
+
+  .button {
+    font-size: 10px;
+    padding: 0;
+  }
 }
 
-@media (max-width: 300px) {
-  body {
-    font-size: 8px;
+@media (max-width: 315px) {
+  .tet {
+    font-size: 10px;
+  }
+
+  .button {
+    font-size: 6px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    width: 15px;
+  }
+
+  main {
+    margin: 0;
+    padding: 0;
+    border: 0;
   }
 }

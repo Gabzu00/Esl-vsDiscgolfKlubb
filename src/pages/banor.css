@@ -1,5 +1,4 @@
 .carousel {
-  width: 750px;
   position: relative;
   top: 50%;
   left: 50%;
@@ -9,10 +8,40 @@
 iframe {
   display: block;
   margin: auto;
+  width: 600px;
+  height: 450px;
+}
+
+@media (max-width: 670px) {
+  iframe {
+    width: 500px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 570px) {
+  iframe {
+    width: 400px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 450px) {
+  iframe {
+    width: 300px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 330px) {
+  iframe {
+    width: 250px;
+    height: 350px;
+  }
 }
 
 .carousel-item img {
-  height: 600px;
+  height: 500px;
   object-fit: cover;
 }
 
@@ -25,5 +54,5 @@ iframe {
 }
 
 .map {
-  margin-top: 100px;
+  margin-top: 10%;
 }
