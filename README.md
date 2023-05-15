@@ -11,6 +11,7 @@ JWT_SECRET = 'lkjahsdfkhaslkjdfhlak82o345yu9823yhasldkjhfapöoiwyu5p9283o4y'
 
 Then you need to change the vite.config file so the the contetnt looks like this --> 
 
+### Code 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
@@ -21,7 +22,7 @@ export default defineConfig({
   } */
 })
 
-
+<br />
 Then you also need to change the DEV_VARIABLE to http://localhost:3000 and add it to all the fetches in the project. It should look somthing like this -->
 
 const response = await fetch('http://localhost:3000/login', {
