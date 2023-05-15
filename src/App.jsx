@@ -10,6 +10,7 @@ import NavBar from './components/NavBar';
 import Footer from './pages/footer';
 import Admin from './pages/admin';
 import "bootstrap/dist/css/bootstrap.min.css";
+import { RequireAuth } from 'react-auth-kit';
 
 function App() {
   return (
@@ -28,7 +29,11 @@ function App() {
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/kontakt" element={<Kontakt />}></Route>
-            <Route path="/admin" element={<Admin />}></Route>
+            <Route path="/admin" element={
+              <RequireAuth loginPath={'/login'}>
+                <Admin />
+              </RequireAuth>
+            } />
           </Routes>
 
 

@@ -22,8 +22,8 @@
 
 .logga {
   position: relative;
-  left: 100px;
-  bottom: 60px;
+  left: 80px;
+  bottom: 55px;
 }
 
 .loginner {
@@ -37,4 +37,12 @@
   position: relative;
   left: 12px;
   margin-top: 12px;
+}
+
+.logoutBtn {
+  margin-top: 8px;
+  position: absolute;
+  display: block;
+  right: 170px;
+  inset-block: block;
 }
