@@ -78,9 +78,6 @@ export default function login() {
                 <Button className="loginBtn" variant="dark" type="submit">Logga in</Button>
               </div>
             </form>
-            <div>
-              <Button className="glömt" variant="dark">Glömt Lösenord eller Användarnamn?</Button>
-            </div>
             <h4>Inte registrerad?</h4>
 
             <Link to={{

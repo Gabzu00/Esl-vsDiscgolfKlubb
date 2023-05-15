@@ -95,30 +95,30 @@ function ModalComponent({ show, setShow, handleClose, userObject, setUserObject,
     <Modal show={show} onHide={handleClose} centered>
       <Modal.Header closeButton>
         <Modal.Title>
-          This is the title
+          Redigera
         </Modal.Title>
       </Modal.Header>
       {currentUser ? (
         <Modal.Body>
           <Form>
             <Form.Group>
-              <Form-Label>Username</Form-Label>
+              <Form-Label>Användarnamn</Form-Label>
               <Form.Control value={userObject.username} onChange={handleUserNameChange} />
             </Form.Group>
             <Form.Group>
-              <Form-Label>Firstname</Form-Label>
+              <Form-Label>Namn</Form-Label>
               <Form.Control value={userObject.firstname} onChange={handleFirstNameChange} />
             </Form.Group>
             <Form.Group>
-              <Form.Label>Lastname</Form.Label>
+              <Form.Label>Efternamn</Form.Label>
               <Form.Control value={userObject.lastname} onChange={handleLastNameChange} />
             </Form.Group>
             <Form.Group>
-              <Form-Label>SSN</Form-Label>
+              <Form-Label>PersonNr</Form-Label>
               <Form.Control value={userObject.ssn} onChange={handleSsnChange} />
             </Form.Group>
             <Form.Group>
-              <Form-Label>Phone</Form-Label>
+              <Form-Label>Telefon</Form-Label>
               <Form.Control value={userObject.phone} onChange={handlePhoneChange} />
             </Form.Group>
             <Form.Group>
@@ -126,23 +126,23 @@ function ModalComponent({ show, setShow, handleClose, userObject, setUserObject,
               <Form.Control value={userObject.email} onChange={handleEmailChange} />
             </Form.Group>
             <Form.Group>
-              <Form-Label>Age</Form-Label>
+              <Form-Label>Ålder</Form-Label>
               <Form.Control value={userObject.age} onChange={handleAgeChange} />
             </Form.Group>
             <Form.Group>
-              <Form-Label>Address</Form-Label>
+              <Form-Label>Adress</Form-Label>
               <Form.Control value={userObject.address} onChange={handleAddressChange} />
             </Form.Group>
             <Form.Group>
-              <Form-Label>City</Form-Label>
+              <Form-Label>Stad</Form-Label>
               <Form.Control value={userObject.city} onChange={handleCityChange} />
             </Form.Group>
             <Form.Group>
-              <Form-Label>Postal</Form-Label>
+              <Form-Label>PostNr</Form-Label>
               <Form.Control value={userObject.postal} onChange={handlePostalChange} />
             </Form.Group>
             <Form.Group>
-              <Form-Label>Role</Form-Label>
+              <Form-Label>Roll</Form-Label>
               <Form.Control value={userObject.role} onChange={handleRoleChange} />
             </Form.Group>
           </Form>
