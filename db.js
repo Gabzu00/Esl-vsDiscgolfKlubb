@@ -5,6 +5,7 @@ dotenv.config()
 
 let dbConnection;
 
+// Gets all users in the database
 export function getData() {
   return dbConnection
     .collection("Users")
@@ -28,9 +29,10 @@ export async function getUser(userName, password) {
   }
 }
 
+// Adds a user to the database
 export function addData(userName, password, firstName, lastName, socialSecurityNumber,
   email, phone, address, city, postalCode, age) {
-  const role = "register";
+  const role = "registered";
   return dbConnection
     .collection("Users")
     .insertOne({
@@ -47,14 +49,28 @@ export function addData(userName, password, firstName, lastName, socialSecurityN
 }
 
 // Updates a user based on id
-export function updateData(_id, userName, firstName, lastName, socialSecurityNumber,
-  email, phone, addrewss, city, postalCode, age, role) {
-  console.log(_id)
+export function updateData(id, userName, firstName, lastName, socialSecurityNumber,
+  phone, email, age, address, city, postalCode, role) {
+  console.log('IN DATABASE', id)
   return dbConnection
     .collection("Users")
     .updateOne(
-      { _id },
-      { $set: { title, artistName, year } }
+      { _id: new ObjectId(id) },
+      {
+        $set: {
+          userName: userName,
+          firstName: firstName,
+          lastName: lastName,
+          socialSecurityNumber: socialSecurityNumber,
+          phone: phone,
+          email: email,
+          age: age,
+          address: address,
+          city: city,
+          postalCode: postalCode,
+          role: role
+        }
+      }
     )
     .then(result => {
       if (result.modifiedCount === 1) {
