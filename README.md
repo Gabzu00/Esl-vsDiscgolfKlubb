@@ -12,7 +12,7 @@ dbUrl = "mongodb+srv://Samuel:HY54T30ClyWnomle@fullstackproject.i9iyxms.mongodb.
 PORT = "3000"
 JWT_SECRET = 'lkjahsdfkhaslkjdfhlak82o345yu9823yhasldkjhfapöoiwyu5p9283o4y'
 ````
-Then you need to change the vite.config file so the the content looks like this --> 
+Then you need to comment out the server part in the vite.config file so that the content looks like this --> 
 
 ```
 // https://vitejs.dev/config/
@@ -27,7 +27,7 @@ export default defineConfig({
 ```
 
 <br />
-Then you also need to change the DEV_VARIABLE in admin.jsx to http://localhost:3000 and add it to all the fetches in the project. It should look something like this -->
+Then you also need to change the DEV_VARIABLE in admin.jsx to http://localhost:3000 and also add http://localhost:3000 to the fetch in login.jsx and register.jsx. The fetches should look something like this -->
 
 ```
 const response = await fetch('http://localhost:3000/login', {
@@ -39,3 +39,8 @@ const response = await fetch('http://localhost:3000/login', {
       });
 ```
       
+## Try out the admin page with this admin user
+```
+Username: user1
+Password: 123
+```
