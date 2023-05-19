@@ -22,7 +22,7 @@ export function getData() {
 export async function getUser(userName, password) {
   const user = await dbConnection.collection("Users").findOne({ userName, password });
 
-  if (typeof user === "object") {
+  if (user) {
     return user;
   } else {
     return "Error, cannot find user";
